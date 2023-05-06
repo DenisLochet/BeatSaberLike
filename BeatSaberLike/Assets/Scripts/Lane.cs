@@ -12,6 +12,8 @@ public class Lane : MonoBehaviour
     List<Note> notes = new List<Note>();
     public List<double> timeStamps = new List<double>();
 
+    float wait = 0;
+
     int spawnIndex = 0;
     int inputIndex = 0;
 

@@ -82,17 +82,18 @@ public class SongManager : MonoBehaviour
 
         Invoke(nameof(StartSong), songDelayInSeconds);
     }
+    private void Update()
+    {
+        songDelayInSeconds -= Time.deltaTime;
+
+        songDelayInSeconds = Mathf.Clamp(songDelayInSeconds, 0, 1);
+    }
     public void StartSong()
     {
         audioSource.Play();
     }
     public static double GetAudioSourceTime()
     {
-        return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
-    }
-
-    void Update()
-    {
-
+        return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency + (double)(1 - Instance.songDelayInSeconds);
     }
 }
